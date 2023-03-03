@@ -1,6 +1,19 @@
 /* Importando o normalize */
 @import url(../vendor/normalize.css);
+@import url(../css/colors.css);
+@import url(../blocks/root/root.css);
 
 /* Importando o CSS do form */
 @import url(../blocks/login/login.css);
 @import url(../blocks/login/login_form/login_form.css);
+
+/* Importando arquivos do header */
+@import url(../blocks/header/__title/title.css);
+@import url(../blocks/header/header.css);
+
+/* Importando visualization */
+@import url(../blocks/visualization/visualization.css);
+@import url(../blocks/visualization/__subtitle/visualization__subtitle.css);
+@import url(../blocks/visualization/__tenants-table/visualization__tenants-table.css);
+@import url(../blocks/visualization/__newForm/visualization__newForm.css);
+@import url(../blocks/visualization/__tenants-form/visualization__tenants-form.css);

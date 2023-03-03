@@ -1,0 +1,18 @@
+.tenants-table,
+.buildings-table,
+.apartmants-table {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 20px;
+}
+
+.tenants-table table,
+.buildings-table table,
+.apartmants-table table,
+tr,
+td,
+th {
+  text-align: center;
+  border: 1px solid var(--color4);
+  padding: 10px;
+}

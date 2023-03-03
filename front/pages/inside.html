@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/index.css" />
+    <link rel="preconnect" href="https://rsms.me/" />
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
+    <title>Sistema de controle de Locação</title>
+  </head>
+  <body>
+    <div class="page">
+      <header><h1 class="title">Sistema de Aluguel de Apartementos</h1></header>
+      <main>
+        <section class="visualization visualization__tenants">
+          <h2 class="subtitle">Locatarios já cadastrados no sistema</h2>
+          <div class="tenants-table">
+            <table>
+              <thead>
+                <tr>
+                  <th>Nome</th>
+                  <th>CPF</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="tenants-template__complete">
+                  <td class="tenants-template__name">Teste</td>
+                  <td class="tenants-template__cpf">teste</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <h3 class="newForm">Insira os dados de um novo Locatario</h3>
+          <div class="container-form">
+            <form action="" method="get" class="tenants-form">
+              <label for="tenants-name" class="tenants-name-form"
+                >Insira o nome do novo locador</label
+              >
+              <input
+                type="text"
+                placeholder="Nome"
+                name="name-tenant"
+                id="tenants-name"
+                class="tenants-name"
+              />
+              <label for="tenants-cpf" class="tenants-cpf-form"
+                >Insira o CPF do novo locador</label
+              >
+              <input
+                type="text"
+                placeholder="CPF"
+                name="cpf-tenant"
+                id="tenants-cpf"
+                class="tenants-cpf"
+              />
+              <button type="submit" class="form__button">Cadastrar</button>
+            </form>
+          </div>
+        </section>
+        <section class="visualization visualization_buildings">
+          <h2 class="subtitle">Predios já cadastrados no sistema</h2>
+          <div class="buildings-table">
+            <table>
+              <thead>
+                <tr>
+                  <th>Nome</th>
+                  <th>Rua</th>
+                  <th>Número</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="buildings-template__complete">
+                  <td class="buildings-template__name">Teste</td>
+                  <td class="buildings-template__street">teste</td>
+                  <td class="buildings-template__number">
+                    testeaaaaaaaaaaaaaaaaaa
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <h3 class="newForm">Insira os dados do novo predio</h3>
+          <div class="container-form">
+            <form action="" method="get" class="building-form">
+              <label for="building-name" class="building-name-form"
+                >Insira o nome do novo predio</label
+              >
+              <input
+                type="text"
+                placeholder="Nome"
+                name="name-building"
+                id="building-name"
+                class="building-name"
+              />
+              <label for="building-street" class="building-street-form"
+                >Insira o nome da rua do novo predio</label
+              >
+              <input
+                type="text"
+                placeholder="Rua"
+                name="street-building"
+                id="building-street"
+                class="building-street"
+              />
+              <label for="building-number" class="building-number-form"
+                >Insira o número da rua do novo predio</label
+              >
+              <input
+                type="text"
+                placeholder="Número"
+                name="number-building"
+                id="building-number"
+                class="building-number"
+              />
+              <button type="submit" class="form__button">Cadastrar</button>
+            </form>
+          </div>
+        </section>
+
+    </section>
+    <section class="visualization visualization_apartmants">
+      <h2 class="subtitle">Apartamentos já cadastrados no sistema</h2>
+      <div class="apartmants-table">
+        <table>
+          <thead>
+            <tr>
+              <th>Número do apartamento</th>
+              <th>Descrição</th>
+              <th>Número de quartos</th>
+              <th>CPF do morador</th>
+              <th>Nome do prédio</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="apartmants-template__complete">
+              <td class="apartmants-template__number">Teste</td>
+              <td class="apartmants-template__description">teste</td>
+              <td class="apartmants-template__numberRooms">
+                testeaaaaaaaaaaaaaaaaaa
+              </td>
+              <td class="apartmants-template__cpf-morador">
+                tteste
+              </td>
+              <td class="apartmants-template__nome-predio">
+                tteste
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <h3 class="newForm">Insira as informações do novo apartamento</h3>
+      <div class="container-form">
+        <form action="" method="get" class="apartmant-form">
+          <label for="apartmant-name" class="apartmant-name-form"
+            >Insira o número do novo apartamento</label
+          >
+          <input
+            type="text"
+            placeholder="Número"
+            name="number-apartmant"
+            id="apartmant-name"
+            class="building-name"
+          />
+          <label for="apartment-description" class="apartment-description-form"
+            >Insira a descrição do apartamento</label
+          >
+          <input
+            type="text"
+            placeholder="Descrição"
+            name="description-apartmant"
+            id="apartment-description"
+            class="building-street"
+          />
+          <label for="apartmant-numberRooms" class="apartmant-numberRooms-form"
+            >Insira a quantidade de comodos que o apartamento possui</label
+          >
+          <input
+            type="text"
+            placeholder="Comodos"
+            name="numberRooms-apartmant"
+            id="apartmant-numberRooms"
+            class="apartmant-numberRooms"
+          />
+          <label for="apartmant-cpfMorador" class="apartmant-cpfMorador-form"
+          >Insira o CPF do morador, caso já esteja alocado</label
+        >
+        <input
+          type="text"
+          placeholder="CPF"
+          name="cpfMorador-apartmant"
+          id="apartmant-cpfMorador"
+          class="apartmant-cpfMorador"
+        />
+        <label for="apartmant-nameBuilding" class="apartmant-nameBuilding-form"
+          >Insira o nome do prédio do apartamento</label
+        >
+        <input
+          type="text"
+          placeholder="Nome do predio"
+          name="nameBuilding-apartmant"
+          id="apartmant-nameBuilding"
+          class="apartmant-nameBuilding"
+        />
+          <button type="submit" class="form__button">Cadastrar</button>
+        </form>
+      </div>
+    </section>
+      </main>
+    </div>
+    <template id="tenants-template">
+      <tbody>
+        <tr class="tenants-template__complete">
+          <td class="tenants-template__name">Teste</td>
+          <td class="tenants-template__cpf">teste</td>
+        </tr>
+      </tbody>
+    </template>
+
+    <template id="buildings-template">
+      <tbody>
+        <tr class="buildings-template__complete">
+          <td class="buildings-template__name">Teste</td>
+          <td class="buildings-template__street">teste</td>
+          <td class="buildings-template__number">teste</td>
+        </tr>
+      </tbody>
+    </template>
+
+    <template id="apartmant-template">
+        <tbody>
+            <tr class="apartmants-template__complete">
+                <td class="apartmants-template__number">Teste</td>
+                <td class="apartmants-template__description">teste</td>
+                <td class="apartmants-template__numberRooms">
+                  testeaaaaaaaaaaaaaaaaaa
+                </td>
+                <td class="apartmants-template__cpf-morador">
+                  tteste
+                </td>
+                <td class="apartmants-template__nome-predio">
+                  tteste
+                </td>
+              </tr>
+        </tbody>
+      </template>
+
+    <script src="./scripts/login.js"></script>
+  </body>
+</html>
