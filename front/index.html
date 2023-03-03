@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/index.css" />
+    <title>Sistema de controle de Locação</title>
+  </head>
+  <body>
+    <header></header>
+    <main>
+      <section class="login">
+        <form class="login-form">
+          <label for="name">Nome do usuario</label>
+          <input
+            type="text"
+            name="name"
+            id="name"
+            class="login-form__name"
+            placeholder="Digite seu usuario"
+            required
+          />
+          <label for="password">Digite sua senha</label>
+          <input
+            type="password"
+            name="password"
+            id="password"
+            class="login-form__password"
+            placeholder="Digite sua senha"
+            required
+          />
+          <a href="#">Esqueceu sua senha</a>
+          <button type="submit" onclick="login()" class="form__button">
+            Logar
+          </button>
+        </form>
+      </section>
+    </main>
+    <script src="./scripts/login.js"></script>
+  </body>
+</html>

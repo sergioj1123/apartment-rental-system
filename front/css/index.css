@@ -1,0 +1,6 @@
+/* Importando o normalize */
+@import url(../vendor/normalize.css);
+
+/* Importando o CSS do form */
+@import url(../blocks/login/login.css);
+@import url(../blocks/login/login_form/login_form.css);
