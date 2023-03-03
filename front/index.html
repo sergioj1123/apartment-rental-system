@@ -11,7 +11,12 @@
     <header></header>
     <main>
       <section class="login">
-        <form class="login-form">
+        <form
+          class="login-form"
+          class="login-form"
+          action="http://localhost:3001/login"
+          method="post"
+        >
           <label for="name">Nome do usuario</label>
           <input
             type="text"
@@ -31,9 +36,7 @@
             required
           />
           <a href="#">Esqueceu sua senha</a>
-          <button type="submit" onclick="login()" class="form__button">
-            Logar
-          </button>
+          <button type="submit" class="form__button">Logar</button>
         </form>
       </section>
     </main>

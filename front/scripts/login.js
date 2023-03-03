@@ -11,20 +11,21 @@ function login(evt) {
   if (name == "" || password == "") {
     return alert("Insira um usuario e senha");
   }
-  fetch("login", {
-    method: "POST",
-    body: JSON.stringify({
-      name: name,
-      password: password,
-    }),
-    headers: { "content-type": "aplication/json" },
-  }).then(async (resp) => {
-    const status = await resp.text();
-    console.log(status);
-    if (status == "conectado") {
-      location.href = "/pages/inside.html";
-    } else {
-      alert("Usuario ou senha incorretos");
-    }
-  });
+
+  // fetch("/http://localhost:3001/login", {
+  //   method: "POST",
+  //   body: JSON.stringify({
+  //     name: name,
+  //     password: password,
+  //   }),
+  //   headers: { "Content-Type": "application/json" },
+  // }).then(async (resp) => {
+  //   var status = await resp.text();
+  //   console.log(status);
+  //   if (status == "conectado") {
+  //     location.href = "/acesso-restrito/acesso.html";
+  //   } else {
+  //     alert("nome e senha invalidos!!");
+  //   }
+  // });
 }
