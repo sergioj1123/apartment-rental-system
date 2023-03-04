@@ -23,38 +23,42 @@
                   <th>CPF</th>
                 </tr>
               </thead>
-              <tbody>
-                <tr class="tenants-template__complete">
-                  <td class="tenants-template__name">Teste</td>
-                  <td class="tenants-template__cpf">teste</td>
+              <tbody class="tenants-template">
+                <tr>
                 </tr>
               </tbody>
             </table>
           </div>
           <h3 class="newForm">Insira os dados de um novo Locatario</h3>
           <div class="container-form">
-            <form action="" method="get" class="tenants-form">
+            <form class="tenants-form">
               <label for="tenants-name" class="tenants-name-form"
                 >Insira o nome do novo locador</label
               >
               <input
                 type="text"
                 placeholder="Nome"
-                name="name-tenant"
+                name="nameTenant"
                 id="tenants-name"
                 class="tenants-name"
+                minlength="10"
+                maxlength="200"
+                required
               />
               <label for="tenants-cpf" class="tenants-cpf-form"
-                >Insira o CPF do novo locador</label
+                >Insira o CPF do novo locador (Apenas digitos)</label
               >
               <input
                 type="text"
                 placeholder="CPF"
-                name="cpf-tenant"
+                name="cpfTenant"
                 id="tenants-cpf"
                 class="tenants-cpf"
+                minlength="11"
+                maxlength="11"
+                required
               />
-              <button type="submit" class="form__button">Cadastrar</button>
+              <button type="submit" class="form__button-tenant">Cadastrar</button>
             </form>
           </div>
         </section>
@@ -69,13 +73,8 @@
                   <th>Número</th>
                 </tr>
               </thead>
-              <tbody>
-                <tr class="buildings-template__complete">
-                  <td class="buildings-template__name">Teste</td>
-                  <td class="buildings-template__street">teste</td>
-                  <td class="buildings-template__number">
-                    testeaaaaaaaaaaaaaaaaaa
-                  </td>
+              <tbody class="buildings-template">
+                <tr>
                 </tr>
               </tbody>
             </table>
@@ -120,35 +119,45 @@
 
     </section>
     <section class="visualization visualization_apartmants">
-      <h2 class="subtitle">Apartamentos já cadastrados no sistema</h2>
+      <h2 class="subtitle">Apartamentos que possuem inquilinos cadastrados no sistema</h2>
       <div class="apartmants-table">
         <table>
           <thead>
             <tr>
               <th>Número do apartamento</th>
               <th>Descrição</th>
+              <th>Valor do Aluguel</th>
               <th>Número de quartos</th>
               <th>CPF do morador</th>
               <th>Nome do prédio</th>
             </tr>
           </thead>
-          <tbody>
-            <tr class="apartmants-template__complete">
-              <td class="apartmants-template__number">Teste</td>
-              <td class="apartmants-template__description">teste</td>
-              <td class="apartmants-template__numberRooms">
-                testeaaaaaaaaaaaaaaaaaa
-              </td>
-              <td class="apartmants-template__cpf-morador">
-                tteste
-              </td>
-              <td class="apartmants-template__nome-predio">
-                tteste
-              </td>
+          <tbody class="apartmants-template">
+            <tr>
             </tr>
           </tbody>
         </table>
       </div>
+
+      <h2 class="subtitle">Apartamentos que não possuem inquilinos cadastrados no sistema</h2>
+      <div class="apartmants-table">
+        <table>
+          <thead>
+            <tr>
+              <th>Número do apartamento</th>
+              <th>Descrição</th>
+              <th>Valor do Aluguel</th>
+              <th>Número de quartos</th>
+              <th>Nome do prédio</th>
+            </tr>
+          </thead>
+          <tbody class="apartmants-empty-template">
+            <tr>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
       <h3 class="newForm">Insira as informações do novo apartamento</h3>
       <div class="container-form">
         <form action="" method="get" class="apartmant-form">
@@ -227,13 +236,15 @@
       </tbody>
     </template>
 
-    <template id="apartmant-template">
+
+    <template id="apartmants-template">
         <tbody>
             <tr class="apartmants-template__complete">
                 <td class="apartmants-template__number">Teste</td>
                 <td class="apartmants-template__description">teste</td>
+                <td class="apartmants-template__value">teste</td>
                 <td class="apartmants-template__numberRooms">
-                  testeaaaaaaaaaaaaaaaaaa
+                  teste
                 </td>
                 <td class="apartmants-template__cpf-morador">
                   tteste
@@ -245,6 +256,25 @@
         </tbody>
       </template>
 
-    <script src="./scripts/login.js"></script>
+      <template id="apartmants-empty-template">
+        <tbody>
+            <tr class="apartmants-empty-template__complete">
+                <td class="apartmants-empty-template__number">Teste</td>
+                <td class="apartmants-empty-template__description">teste</td>
+                <td class="apartmants-empty-template__value">teste</td>
+                <td class="apartmants-empty-template__numberRooms">
+                  teste
+                </td>
+                </td>
+                <td class="apartmants-empty-template__nome-predio">
+                  tteste
+                </td>
+              </tr>
+        </tbody>
+      </template>
+      <!-- Scripts -->
+      <script src="../scripts/index.js"></script>
+      <script src="../scripts/formsTenant.js"></script>
+      <script src="../scripts/formsBuilding.js"></script>
   </body>
 </html>
