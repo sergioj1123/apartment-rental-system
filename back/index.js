@@ -140,6 +140,7 @@ app.get("/getAllApartmants", (req, res) => {
   })();
 });
 
+// Botão de inserção de inquilino
 app.post("/newTenant", (req, res) => {
   (async () => {
     const allTenants = await Tenant.findAll({
@@ -153,3 +154,121 @@ app.post("/newTenant", (req, res) => {
     }
   })();
 });
+
+// Botão de inserção de predios
+app.post("/newBuilding", (req, res) => {
+  (async () => {
+    const allBuilding = await Building.findAll({
+      where: { name: req.body.name },
+    });
+    if (Object.keys(allBuilding).length === 0) {
+      newBuilding(req.body.name, req.body.number, req.body.street);
+      res.send("Inserido com sucesso");
+    } else {
+      res.send("O nome desse predio já foi cadastrado");
+    }
+  })();
+});
+
+// Botão de inserção de apartamentos
+app.post("/newApartmant", (req, res) => {
+  (async () => {
+    // verifica se existe um predio com o nome que esta sendo relacionado pelo nome, recuperando o ID do predio
+    const buildingName = await Building.findOne({
+      where: { name: req.body.namebuilding },
+    });
+    const cpfTenant = await Tenant.findOne({
+      where: { cpf: req.body.cpf },
+    });
+    // verifica se existe um predio com o nome que esta sendo relacionado pelo nome, recuperando o ID do predio
+    if (req.body.cpf) {
+      // Caso o campo CPF tenha sido preenchido, mas não encontrou nenhuma relação entre o CPF inserido e os que possuem no ImageBitmapRenderingContext, o sistema não inser
+      if (cpfTenant == null && cpfTenant == undefined) {
+        res.send("CPF não cadastrado para algum inquilino");
+        return;
+      }
+    }
+    if (buildingName != null && buildingName !== undefined) {
+      if (!req.body.cpf) {
+        newApartment(
+          req.body.number,
+          req.body.description,
+          req.body.value,
+          req.body.rooms,
+          "",
+          buildingName.id
+        );
+      } else {
+        newApartment(
+          req.body.number,
+          req.body.description,
+          req.body.value,
+          req.body.rooms,
+          cpfTenant.id,
+          buildingName.id
+        );
+      }
+      res.send("Inserido com sucesso");
+    } else {
+      res.send("Predio não cadastrado");
+    }
+  })();
+});
+
+// // Botão de locação de apartamento
+// app.post("/location", (req, res) => {
+//   (async () => {
+//    // verifica se existe um predio com o nome que esta sendo relacionado pelo nome, recuperando o ID do predio
+//    const buildingName = await Building.findOne({
+//     where: { name: req.body.buildingName },
+//   });
+//   const cpfTenant = await Tenant.findOne({
+//     where: { cpf: req.body.cpf },
+//   });
+//   const apartmantNumber = await Apartment.findOne({
+//     where: { number: req.body.apartmantNumber },
+//   });
+
+//   if (cpfTenant == null && cpfTenant == undefined) {
+//     res.send("CPF não cadastrado para algum inquilino");
+//     return;
+//   }
+
+//   if (buildingName == null && buildingName == undefined) {
+//     res.send("Não existe esse predio");
+//     return;
+//   }else{
+//     if(buildingName.id == )
+//   }
+
+//   if (cpfTenant == null && cpfTenant == undefined) {
+//     res.send("CPF não cadastrado para algum inquilino");
+//     return;
+//   }
+
+//   if (buildingName != null && buildingName !== undefined) {
+//     if (!req.body.cpf) {
+//       newApartment(
+//         req.body.number,
+//         req.body.description,
+//         req.body.value,
+//         req.body.rooms,
+//         "",
+//         buildingName.id
+//       );
+//     } else {
+//       newApartment(
+//         req.body.number,
+//         req.body.description,
+//         req.body.value,
+//         req.body.rooms,
+//         cpfTenant.id,
+//         buildingName.id
+//       );
+//     }
+//     res.send("Inserido com sucesso");
+//   } else {
+//     res.send("Predio não cadastrado");
+//   }
+// })();
+// });

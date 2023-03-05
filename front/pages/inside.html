@@ -81,16 +81,17 @@
           </div>
           <h3 class="newForm">Insira os dados do novo predio</h3>
           <div class="container-form">
-            <form action="" method="get" class="building-form">
+            <form class="building-form">
               <label for="building-name" class="building-name-form"
                 >Insira o nome do novo predio</label
               >
               <input
                 type="text"
                 placeholder="Nome"
-                name="name-building"
+                name="nameBuilding"
                 id="building-name"
-                class="building-name"
+                class="nameBuilding"
+                required
               />
               <label for="building-street" class="building-street-form"
                 >Insira o nome da rua do novo predio</label
@@ -98,19 +99,22 @@
               <input
                 type="text"
                 placeholder="Rua"
-                name="street-building"
+                name="streetBuilding"
                 id="building-street"
-                class="building-street"
+                class="streetBuilding"
+                required
+
               />
               <label for="building-number" class="building-number-form"
                 >Insira o número da rua do novo predio</label
               >
               <input
-                type="text"
+                type="number"
                 placeholder="Número"
-                name="number-building"
+                name="numberBuilding"
                 id="building-number"
-                class="building-number"
+                class="numberBuilding"
+                required
               />
               <button type="submit" class="form__button">Cadastrar</button>
             </form>
@@ -158,18 +162,21 @@
         </table>
       </div>
 
+      <div class="containerApartmant">
+        <div class="container">
       <h3 class="newForm">Insira as informações do novo apartamento</h3>
       <div class="container-form">
-        <form action="" method="get" class="apartmant-form">
+        <form  class="apartmant-form">
           <label for="apartmant-name" class="apartmant-name-form"
             >Insira o número do novo apartamento</label
           >
           <input
-            type="text"
+            type="number"
             placeholder="Número"
-            name="number-apartmant"
+            name="numberApartmant"
             id="apartmant-name"
-            class="building-name"
+            class="numberApartmant"
+            required
           />
           <label for="apartment-description" class="apartment-description-form"
             >Insira a descrição do apartamento</label
@@ -177,19 +184,32 @@
           <input
             type="text"
             placeholder="Descrição"
-            name="description-apartmant"
+            name="descriptionApartmant"
             id="apartment-description"
-            class="building-street"
+            class="descriptionApartmant"
+            required
+          />
+          <label for="apartment-RentValue" class="apartment-RentValue-form"
+            >Insira o valor do Aluguel</label
+          >
+          <input
+            type="number"
+            placeholder="Valor"
+            name="RentValueApartmant"
+            id="apartment-RentValue"
+            class="RentValueApartmant"
+            required
           />
           <label for="apartmant-numberRooms" class="apartmant-numberRooms-form"
             >Insira a quantidade de comodos que o apartamento possui</label
           >
           <input
-            type="text"
+            type="number"
             placeholder="Comodos"
-            name="numberRooms-apartmant"
+            name="numberRoomsApartmant"
             id="apartmant-numberRooms"
-            class="apartmant-numberRooms"
+            class="numberRoomsApartmant"
+            required
           />
           <label for="apartmant-cpfMorador" class="apartmant-cpfMorador-form"
           >Insira o CPF do morador, caso já esteja alocado</label
@@ -197,9 +217,11 @@
         <input
           type="text"
           placeholder="CPF"
-          name="cpfMorador-apartmant"
+          name="cpfMoradorApartmant"
           id="apartmant-cpfMorador"
-          class="apartmant-cpfMorador"
+          class="cpfMoradorApartmant"
+          minlength="11"
+          maxlength="11"
         />
         <label for="apartmant-nameBuilding" class="apartmant-nameBuilding-form"
           >Insira o nome do prédio do apartamento</label
@@ -207,13 +229,175 @@
         <input
           type="text"
           placeholder="Nome do predio"
-          name="nameBuilding-apartmant"
+          name="nameBuildingApartmant"
           id="apartmant-nameBuilding"
-          class="apartmant-nameBuilding"
+          class="nameBuildingApartmant"
+          required
         />
           <button type="submit" class="form__button">Cadastrar</button>
         </form>
       </div>
+    </div>
+    <div class="container">
+
+      <h3 class="newForm">Insira o CPF do locatario junto ao nome do predio e do apartamento</h3>
+      <div class="container-form">
+      <form  class="apartmant-change-form">
+        <label for="cpfLocatario" class="apartmant-name-form"
+          >Insira o CPF do novo locatario</label
+        >
+        <input
+          type="name"
+          placeholder="CPF"
+          name="cpfLocatario"
+          id="cpfLocatario"
+          class="cpfLocatario"
+          required
+        />
+        <label for="nameBuilding" class="nameBuilding-form"
+          >Insira o nome do predio</label
+        >
+        <input
+          type="text"
+          placeholder="Nome do prédio"
+          name="nameBuilding"
+          id="nameBuilding"
+          class="nameBuilding"
+          required
+        />
+        <label for="apartmantNumber" class="apartmantNumber-form"
+          >Insira o número do apartamento</label
+        >
+        <input
+          type="number"
+          placeholder="Número"
+          name="apartmantNumber"
+          id="apartmantNumber"
+          class="apartmantNumber"
+          required
+        />
+        <button type="submit" class="form__button">Cadastrar</button>
+      </form>
+    </div>
+    </div>
+  </div>
+
+  <div class="containerApartmant_500px">
+    <h3 class="newForm">Insira as informações do novo apartamento</h3>
+    <div class="container-form">
+      <form  class="apartmant-form">
+        <label for="apartmant-name" class="apartmant-name-form"
+          >Insira o número do novo apartamento</label
+        >
+        <input
+          type="number"
+          placeholder="Número"
+          name="numberApartmant"
+          id="apartmant-name"
+          class="numberApartmant"
+          required
+        />
+        <label for="apartment-description" class="apartment-description-form"
+          >Insira a descrição do apartamento</label
+        >
+        <input
+          type="text"
+          placeholder="Descrição"
+          name="descriptionApartmant"
+          id="apartment-description"
+          class="descriptionApartmant"
+          required
+        />
+        <label for="apartment-RentValue" class="apartment-RentValue-form"
+          >Insira o valor do Aluguel</label
+        >
+        <input
+          type="number"
+          placeholder="Valor"
+          name="RentValueApartmant"
+          id="apartment-RentValue"
+          class="RentValueApartmant"
+          required
+        />
+        <label for="apartmant-numberRooms" class="apartmant-numberRooms-form"
+          >Insira a quantidade de comodos que o apartamento possui</label
+        >
+        <input
+          type="number"
+          placeholder="Comodos"
+          name="numberRoomsApartmant"
+          id="apartmant-numberRooms"
+          class="numberRoomsApartmant"
+          required
+        />
+        <label for="apartmant-cpfMorador" class="apartmant-cpfMorador-form"
+        >Insira o CPF do morador, caso já esteja alocado</label
+      >
+      <input
+        type="text"
+        placeholder="CPF"
+        name="cpfMoradorApartmant"
+        id="apartmant-cpfMorador"
+        class="cpfMoradorApartmant"
+        minlength="11"
+        maxlength="11"
+      />
+      <label for="apartmant-nameBuilding" class="apartmant-nameBuilding-form"
+        >Insira o nome do prédio do apartamento</label
+      >
+      <input
+        type="text"
+        placeholder="Nome do predio"
+        name="nameBuildingApartmant"
+        id="apartmant-nameBuilding"
+        class="nameBuildingApartmant"
+        required
+      />
+        <button type="submit" class="form__button">Cadastrar</button>
+      </form>
+    </div>
+
+    <h3 class="newForm">Insira as informações do novo apartamento</h3>
+    <div class="container-form">
+      <form  class="apartmant-change-form">
+        <label for="cpfLocatario" class="apartmant-name-form"
+          >Insira o CPF do novo locatario</label
+        >
+        <input
+          type="name"
+          placeholder="CPF"
+          name="cpfLocatario"
+          id="cpfLocatario"
+          class="cpfLocatario"
+          required
+        />
+        <label for="nameBuilding" class="nameBuilding-form"
+          >Insira o nome do predio</label
+        >
+        <input
+          type="text"
+          placeholder="Nome do prédio"
+          name="nameBuilding"
+          id="nameBuilding"
+          class="nameBuilding"
+          required
+        />
+        <label for="apartmantNumber" class="apartmantNumber-form"
+          >Insira o número do apartamento</label
+        >
+        <input
+          type="number"
+          placeholder="Número"
+          name="apartmantNumber"
+          id="apartmantNumber"
+          class="apartmantNumber"
+          required
+        />
+        <button type="submit" class="form__button">Cadastrar</button>
+      </form>
+  </div>
+</div>
+
     </section>
       </main>
     </div>
@@ -274,7 +458,9 @@
       </template>
       <!-- Scripts -->
       <script src="../scripts/index.js"></script>
-      <script src="../scripts/formsTenant.js"></script>
+      <script  type="module" src="../scripts/formsTenant.js"></script>
       <script src="../scripts/formsBuilding.js"></script>
+      <script  type="module" src="../scripts/formApartmants.js"></script>
+      <script  type="module" src="../scripts/fomApartment-location.js"></script>
   </body>
 </html>

@@ -1,0 +1,22 @@
+.containerApartmant {
+  display: flex;
+  justify-content: space-around;
+  column-gap: 20px;
+}
+
+.containerApartmant h3 {
+  max-width: 443px;
+}
+
+.containerApartmant_500px {
+  display: none;
+}
+
+@media screen and (max-width: 900px) {
+  .containerApartmant {
+    display: none;
+  }
+  .containerApartmant_500px {
+    display: block;
+  }
+}
