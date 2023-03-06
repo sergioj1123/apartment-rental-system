@@ -14,9 +14,6 @@
 
 @media screen and (max-width: 900px) {
   .containerApartmant {
-    display: none;
-  }
-  .containerApartmant_500px {
-    display: block;
+    flex-direction: column;
   }
 }

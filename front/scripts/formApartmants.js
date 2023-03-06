@@ -1,5 +1,6 @@
 const formApartmants = document.querySelector(".apartmant-form");
 import { mascara } from "./formsTenant.js";
+import { setText } from "./popup.js";
 
 formApartmants.addEventListener("submit", (event) => {
   event.preventDefault();
@@ -15,7 +16,7 @@ formApartmants.addEventListener("submit", (event) => {
   }
   console.log(cpf);
   (async () => {
-    await fetch("http://localhost:3001/newApartmant", {
+    const response = await fetch("http://localhost:3001/newApartmant", {
       method: "POST",
       body: JSON.stringify({
         number: number,
@@ -29,11 +30,12 @@ formApartmants.addEventListener("submit", (event) => {
         Accept: "application/json",
         "Content-Type": "application/json",
       },
-    })
-      .then((res) => res.json())
-      .then((res) => console.log(data))
-      .catch((err) => {
-        console.log(err);
-      });
+    });
+    const data = await response.json();
+    if (data.msg == "ok") {
+      window.location.reload(true);
+    } else {
+      setText(data.msg);
+    }
   })();
 });

@@ -18,3 +18,6 @@
 @import url(../blocks/visualization/__newForm/visualization__newForm.css);
 @import url(../blocks/visualization/__tenants-form/visualization__tenants-form.css);
 @import url(../blocks/visualization/__containerApartmant/visualization__containerApartmant.css);
+
+/* importando informações da tela de popup */
+@import url(../blocks/popup/popup.css);

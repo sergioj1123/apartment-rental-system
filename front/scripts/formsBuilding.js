@@ -1,4 +1,5 @@
 const formBuilding = document.querySelector(".building-form");
+import { setText } from "./popup.js";
 
 formBuilding.addEventListener("submit", (event) => {
   event.preventDefault();
@@ -7,7 +8,7 @@ formBuilding.addEventListener("submit", (event) => {
   const street = document.querySelector(".streetBuilding").value;
   const number = document.querySelector(".numberBuilding").value;
   (async () => {
-    await fetch("http://localhost:3001/newBuilding", {
+    const response = await fetch("http://localhost:3001/newBuilding", {
       method: "POST",
       body: JSON.stringify({
         name: name,
@@ -18,11 +19,12 @@ formBuilding.addEventListener("submit", (event) => {
         Accept: "application/json",
         "Content-Type": "application/json",
       },
-    })
-      .then((res) => res.json())
-      .then((res) => console.log(data))
-      .catch((err) => {
-        console.log(err);
-      });
+    });
+    const data = await response.json();
+    if (data.msg == "ok") {
+      window.location.reload(true);
+    } else {
+      setText(data.msg);
+    }
   })();
 });

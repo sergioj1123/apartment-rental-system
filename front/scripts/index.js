@@ -111,5 +111,3 @@ function completeApartmantsEmpty(data) {
 getAllTenants();
 getAllBuildings();
 getAllApartmants();
-
-// module.exports.getAllTenants = getAllTenants;

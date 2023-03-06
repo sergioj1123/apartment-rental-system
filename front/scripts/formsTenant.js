@@ -1,4 +1,5 @@
 const form = document.querySelector(".tenants-form");
+import { setText } from "./popup.js";
 // Envia novo Locatario
 function TestaCPF(cpf) {
   var numeros, digitos, soma, i, resultado, digitos_iguais;
@@ -42,7 +43,7 @@ form.addEventListener("submit", (event) => {
   if (TestaCPF(cpf)) {
     cpf = mascara(cpf);
     (async () => {
-      await fetch("http://localhost:3001/newTenant", {
+      const response = await fetch("http://localhost:3001/newTenant", {
         method: "POST",
         body: JSON.stringify({
           name: name,
@@ -52,14 +53,15 @@ form.addEventListener("submit", (event) => {
           Accept: "application/json",
           "Content-Type": "application/json",
         },
-      })
-        .then((res) => res.json())
-        .then((res) => console.log(data))
-        .catch((err) => {
-          console.log(err);
-        });
+      });
+      const data = await response.json();
+      if (data.msg == "ok") {
+        window.location.reload(true);
+      } else {
+        setText(data.msg);
+      }
     })();
   } else {
-    alert("Esse CPF não é valido, favor inserir um CPF valido");
+    setText("Esse CPF não é valido, favor inserir um CPF valido!");
   }
 });

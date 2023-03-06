@@ -136,9 +136,6 @@ app.get("/getAllBuildings", (req, res) => {
 app.get("/getAllApartmants", (req, res) => {
   (async () => {
     const getAllApartmants = await Apartment.findAll();
-    const teste = [];
-    console.log(Array.isArray(teste));
-
     for (let i = 0; i < getAllApartmants.length; i++) {
       const buildingName = await Building.findOne({
         where: { id: getAllApartmants[i].building_id },
@@ -163,9 +160,9 @@ app.post("/newTenant", (req, res) => {
     });
     if (Object.keys(allTenants).length === 0) {
       newTenant(req.body.name, req.body.cpf);
-      res.send("Inserido com sucesso");
+      res.send({ msg: "ok" });
     } else {
-      res.send("CPF já cadastrado no banco");
+      res.send({ msg: "CPF já cadastrado como Locatário!" });
     }
   })();
 });
@@ -178,9 +175,9 @@ app.post("/newBuilding", (req, res) => {
     });
     if (Object.keys(allBuilding).length === 0) {
       newBuilding(req.body.name, req.body.number, req.body.street);
-      res.send("Inserido com sucesso");
+      res.send({ msg: "ok" });
     } else {
-      res.send("O nome desse predio já foi cadastrado");
+      res.send({ msg: "O nome desse prédio/condomínio já foi cadastrado!" });
     }
   })();
 });
@@ -202,7 +199,9 @@ app.post("/newApartmant", (req, res) => {
     if (req.body.cpf) {
       // Caso o campo CPF tenha sido preenchido, mas não encontrou nenhuma relação entre o CPF inserido e os que possuem no ImageBitmapRenderingContext, o sistema não inser
       if (cpfTenant == null && cpfTenant == undefined) {
-        res.send("CPF não cadastrado para algum inquilino");
+        res.send({
+          msg: "CPF não cadastrado como inquilino, para alocar o imóvel é nescessário cadastrar o inquilino.",
+        });
         return;
       }
     }
@@ -211,14 +210,15 @@ app.post("/newApartmant", (req, res) => {
 
       if (Object.keys(numberAllApartmants).length != 0) {
         numberAllApartmants.map((element) => {
-          console.log(element.building_id);
           if (element.building_id == buildingName.id) {
             alredyHaveNumberApartmant = true;
           }
         });
       }
       if (alredyHaveNumberApartmant == true) {
-        res.send("Já existe esse número de apartamento");
+        res.send({
+          msg: "Já existe esse número de apartamento cadastrado no prédio/condomínio inserido!",
+        });
         return;
       }
       if (buildingName.id)
@@ -241,9 +241,9 @@ app.post("/newApartmant", (req, res) => {
             buildingName.id
           );
         }
-      res.send("Inserido com sucesso");
+      res.send({ msg: "ok" });
     } else {
-      res.send("Predio não cadastrado");
+      res.send({ msg: "Prédio/condomínio não cadastrado no sistema" });
     }
   })();
 });
@@ -262,18 +262,22 @@ app.post("/location", (req, res) => {
       where: { number: req.body.apartmantNumber },
     });
     if (cpfTenant == null && cpfTenant == undefined) {
-      res.send("CPF ainda não cadastrado");
+      res.send({
+        msg: "CPF não cadastrado como inquilino, para alocar o imóvel é nescessário cadastrar o inquilino.",
+      });
       return;
     }
 
     if (buildingName == null && buildingName == undefined) {
-      res.send("Não existe esse predio");
+      res.send({ msg: "Prédio/condomínio não cadastrado no sistema" });
       return;
     }
     // Variavel que criei para controlar caso não o número do apartamento não pertença ao nome do predio inserido
     let buildingNumberNotFound = true;
     if (Object.keys(apartmantNumber).length === 0) {
-      res.send("Número de apartamento não cadastrado");
+      res.send({
+        msg: "Número do apartamento não cadastrado para o prédio/condomínio inserido!",
+      });
       return;
     } else {
       apartmantNumber.map((element) => {
@@ -282,15 +286,15 @@ app.post("/location", (req, res) => {
           if (element.tenant_id == null && element.tenant_id == undefined) {
             element.tenant_id = cpfTenant.id;
             element.save();
-            res.send("Inquilino alocado com sucesso");
+            res.send({ msg: "ok" });
           } else {
-            res.send("Esse apartamento já possui inquilino");
+            res.send({ msg: "O apartamento inserido já possui inquilino." });
           }
         }
       });
     }
     if (buildingNumberNotFound == true) {
-      res.send("Número do prédio não pertence ao predio inserido");
+      res.send({ msg: "Número do prédio não pertence ao predio inserido." });
     }
   })();
 });

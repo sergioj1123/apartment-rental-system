@@ -4,41 +4,361 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/index.css" />
+    <link rel="stylesheet" href="./pages/index.css" />
+    <link rel="preconnect" href="https://rsms.me/" />
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
     <title>Sistema de controle de Locação</title>
   </head>
   <body>
-    <header></header>
-    <main>
-      <section class="login">
-        <form
-          class="login-form"
-          class="login-form"
-          action="http://localhost:3001/login"
-          method="post"
-        >
-          <label for="name">Nome do usuario</label>
+    <div class="page">
+      <header><h1 class="title">Sistema de Aluguel de Apartementos</h1></header>
+      <main>
+        <section class="visualization visualization__tenants">
+          <h2 class="subtitle">Locatarios já cadastrados no sistema</h2>
+          <div class="tenants-table">
+            <table>
+              <thead>
+                <tr>
+                  <th>Nome</th>
+                  <th>CPF</th>
+                </tr>
+              </thead>
+              <tbody class="tenants-template">
+                <tr>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <h3 class="newForm">Insira os dados de um novo Locatario</h3>
+          <div class="container-form">
+            <form class="tenants-form">
+              <label for="tenants-name" class="tenants-name-form"
+                >Insira o nome do novo locador</label
+              >
+              <input
+                type="text"
+                placeholder="Nome"
+                name="nameTenant"
+                id="tenants-name"
+                class="tenants-name"
+                minlength="10"
+                maxlength="200"
+                required
+              />
+              <label for="tenants-cpf" class="tenants-cpf-form"
+                >Insira o CPF do novo locador (Apenas digitos)</label
+              >
+              <input
+                type="text"
+                placeholder="CPF"
+                name="cpfTenant"
+                id="tenants-cpf"
+                class="tenants-cpf"
+                minlength="11"
+                maxlength="11"
+                required
+              />
+              <button type="submit" class="form__button-tenant">Cadastrar</button>
+            </form>
+          </div>
+        </section>
+        <section class="visualization visualization_buildings">
+          <h2 class="subtitle">Predios já cadastrados no sistema</h2>
+          <div class="buildings-table">
+            <table>
+              <thead>
+                <tr>
+                  <th>Nome</th>
+                  <th>Rua</th>
+                  <th>Número</th>
+                </tr>
+              </thead>
+              <tbody class="buildings-template">
+                <tr>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <h3 class="newForm">Insira os dados do novo predio</h3>
+          <div class="container-form">
+            <form class="building-form">
+              <label for="building-name" class="building-name-form"
+                >Insira o nome do novo predio</label
+              >
+              <input
+                type="text"
+                placeholder="Nome"
+                name="nameBuilding"
+                id="building-name"
+                class="nameBuilding"
+                required
+              />
+              <label for="building-street" class="building-street-form"
+                >Insira o nome da rua do novo predio</label
+              >
+              <input
+                type="text"
+                placeholder="Rua"
+                name="streetBuilding"
+                id="building-street"
+                class="streetBuilding"
+                required
+
+              />
+              <label for="building-number" class="building-number-form"
+                >Insira o número da rua do novo predio</label
+              >
+              <input
+                type="number"
+                placeholder="Número"
+                name="numberBuilding"
+                id="building-number"
+                class="numberBuilding"
+                required
+              />
+              <button type="submit" class="form__button">Cadastrar</button>
+            </form>
+          </div>
+        </section>
+
+
+        <section class=popup>
+          <div class="popup__container">
+            <p class="popup__information">text</p>
+            <button type="button" class="popup__close">Ok</button>
+          </div>
+        </section>
+
+    </section>
+    <section class="visualization visualization_apartmants">
+      <h2 class="subtitle">Apartamentos que possuem inquilinos cadastrados no sistema</h2>
+      <div class="apartmants-table">
+        <table>
+          <thead>
+            <tr>
+              <th>Número do apartamento</th>
+              <th>Descrição</th>
+              <th>Valor do Aluguel</th>
+              <th>Número de quartos</th>
+              <th>CPF do morador</th>
+              <th>Nome do prédio</th>
+            </tr>
+          </thead>
+          <tbody class="apartmants-template">
+            <tr>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 class="subtitle">Apartamentos que não possuem inquilinos cadastrados no sistema</h2>
+      <div class="apartmants-table">
+        <table>
+          <thead>
+            <tr>
+              <th>Número do apartamento</th>
+              <th>Descrição</th>
+              <th>Valor do Aluguel</th>
+              <th>Número de quartos</th>
+              <th>Nome do prédio</th>
+            </tr>
+          </thead>
+          <tbody class="apartmants-empty-template">
+            <tr>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="containerApartmant">
+        <div class="container">
+      <h3 class="newForm">Insira as informações do novo apartamento</h3>
+      <div class="container-form">
+        <form  class="apartmant-form">
+          <label for="apartmant-name" class="apartmant-name-form"
+            >Insira o número do novo apartamento</label
+          >
+          <input
+            type="number"
+            placeholder="Número"
+            name="numberApartmant"
+            id="apartmant-name"
+            class="numberApartmant"
+            required
+          />
+          <label for="apartment-description" class="apartment-description-form"
+            >Insira a descrição do apartamento</label
+          >
           <input
             type="text"
-            name="name"
-            id="name"
-            class="login-form__name"
-            placeholder="Digite seu usuario"
+            placeholder="Descrição"
+            name="descriptionApartmant"
+            id="apartment-description"
+            class="descriptionApartmant"
             required
           />
-          <label for="password">Digite sua senha</label>
+          <label for="apartment-RentValue" class="apartment-RentValue-form"
+            >Insira o valor do Aluguel</label
+          >
           <input
-            type="password"
-            name="password"
-            id="password"
-            class="login-form__password"
-            placeholder="Digite sua senha"
+            type="number"
+            placeholder="Valor"
+            name="RentValueApartmant"
+            id="apartment-RentValue"
+            class="RentValueApartmant"
             required
           />
-          <a href="#">Esqueceu sua senha</a>
-          <button type="submit" class="form__button">Logar</button>
+          <label for="apartmant-numberRooms" class="apartmant-numberRooms-form"
+            >Insira a quantidade de comodos que o apartamento possui</label
+          >
+          <input
+            type="number"
+            placeholder="Comodos"
+            name="numberRoomsApartmant"
+            id="apartmant-numberRooms"
+            class="numberRoomsApartmant"
+            required
+          />
+          <label for="apartmant-cpfMorador" class="apartmant-cpfMorador-form"
+          >Insira o CPF do morador, caso já esteja alocado</label
+        >
+        <input
+          type="number"
+          placeholder="CPF"
+          name="cpfMoradorApartmant"
+          id="apartmant-cpfMorador"
+          class="cpfMoradorApartmant"
+          minlength="11"
+          maxlength="11"
+        />
+        <label for="apartmant-nameBuilding" class="apartmant-nameBuilding-form"
+          >Insira o nome do prédio do apartamento</label
+        >
+        <input
+          type="text"
+          placeholder="Nome do predio"
+          name="nameBuildingApartmant"
+          id="apartmant-nameBuilding"
+          class="nameBuildingApartmant"
+          required
+        />
+          <button type="submit" class="form__button">Cadastrar</button>
         </form>
-      </section>
-    </main>
+      </div>
+    </div>
+    <div class="container">
+
+      <h3 class="newForm">Insira o CPF do locatario junto ao nome do predio e do apartamento</h3>
+      <div class="container-form">
+      <form  class="apartmant-change-form">
+        <label for="cpfLocatario" class="apartmant-name-form"
+          >Insira o CPF do novo locatario</label
+        >
+        <input
+          type="number"
+          placeholder="CPF"
+          name="cpfLocatario"
+          id="cpfLocatario"
+          class="cpfLocatario"
+          minlength="11"
+                maxlength="11"
+          required
+        />
+        <label for="nameBuilding" class="nameBuilding-form"
+          >Insira o nome do predio</label
+        >
+        <input
+          type="text"
+          placeholder="Nome do prédio"
+          name="nameBuilding"
+          id="nameBuilding"
+          class="buildingName"
+          required
+        />
+        <label for="apartmantNumber" class="apartmantNumber-form"
+          >Insira o número do apartamento</label
+        >
+        <input
+          type="number"
+          placeholder="Número"
+          name="apartmantNumber"
+          id="apartmantNumber"
+          class="apartmantNumber"
+          required
+        />
+        <button type="submit" class="form__button">Cadastrar</button>
+      </form>
+    </div>
+    </div>
+  </div>
+
+  
+</div>
+
+    </section>
+      </main>
+    </div>
+    <template id="tenants-template">
+      <tbody>
+        <tr class="tenants-template__complete">
+          <td class="tenants-template__name">Teste</td>
+          <td class="tenants-template__cpf">teste</td>
+        </tr>
+      </tbody>
+    </template>
+
+    <template id="buildings-template">
+      <tbody>
+        <tr class="buildings-template__complete">
+          <td class="buildings-template__name">Teste</td>
+          <td class="buildings-template__street">teste</td>
+          <td class="buildings-template__number">teste</td>
+        </tr>
+      </tbody>
+    </template>
+
+
+    <template id="apartmants-template">
+        <tbody>
+            <tr class="apartmants-template__complete">
+                <td class="apartmants-template__number">Teste</td>
+                <td class="apartmants-template__description">teste</td>
+                <td class="apartmants-template__value">teste</td>
+                <td class="apartmants-template__numberRooms">
+                  teste
+                </td>
+                <td class="apartmants-template__cpf-morador">
+                  tteste
+                </td>
+                <td class="apartmants-template__nome-predio">
+                  tteste
+                </td>
+              </tr>
+        </tbody>
+      </template>
+
+      <template id="apartmants-empty-template">
+        <tbody>
+            <tr class="apartmants-empty-template__complete">
+                <td class="apartmants-empty-template__number">Teste</td>
+                <td class="apartmants-empty-template__description">teste</td>
+                <td class="apartmants-empty-template__value">teste</td>
+                <td class="apartmants-empty-template__numberRooms">
+                  teste
+                </td>
+                </td>
+                <td class="apartmants-empty-template__nome-predio">
+                  tteste
+                </td>
+              </tr>
+        </tbody>
+      </template>
+      <!-- Scripts -->
+      <script src="./scripts/index.js"></script>
+      <script  type="module" src="./scripts/formsTenant.js"></script>
+      <script type="module" src="./scripts/formsBuilding.js"></script>
+      <script  type="module" src="./scripts/formApartmants.js"></script>
+      <script  type="module" src="./scripts/fomApartment-location.js"></script>
+      <script  type="module" src="./scripts/popup.js"></script>
   </body>
 </html>
