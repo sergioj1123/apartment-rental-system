@@ -14,7 +14,7 @@
       <header><h1 class="title">Sistema de Aluguel de Apartementos</h1></header>
       <main>
         <section class="visualization visualization__tenants">
-          <h2 class="subtitle">Locatarios já cadastrados no sistema</h2>
+          <h2 class="subtitle">Inquilinos já cadastrados no sistema</h2>
           <div class="tenants-table">
             <table>
               <thead>
@@ -29,7 +29,7 @@
               </tbody>
             </table>
           </div>
-          <h3 class="newForm">Insira os dados de um novo Locatario</h3>
+          <h3 class="newForm">Insira os dados de um novo inquilino</h3>
           <div class="container-form">
             <form class="tenants-form">
               <label for="tenants-name" class="tenants-name-form"
@@ -46,7 +46,7 @@
                 required
               />
               <label for="tenants-cpf" class="tenants-cpf-form"
-                >Insira o CPF do novo locador (Apenas digitos)</label
+                >Insira o CPF do novo inquilino (Apenas digitos)</label
               >
               <input
                 type="text"
@@ -63,7 +63,7 @@
           </div>
         </section>
         <section class="visualization visualization_buildings">
-          <h2 class="subtitle">Predios já cadastrados no sistema</h2>
+          <h2 class="subtitle">Prédios/condomínios já cadastrados no sistema</h2>
           <div class="buildings-table">
             <table>
               <thead>
@@ -79,11 +79,11 @@
               </tbody>
             </table>
           </div>
-          <h3 class="newForm">Insira os dados do novo predio</h3>
+          <h3 class="newForm">Insira os dados do novo prédio/condomínio</h3>
           <div class="container-form">
             <form class="building-form">
               <label for="building-name" class="building-name-form"
-                >Insira o nome do novo predio</label
+                >Insira o nome do novo prédios/condomínio</label
               >
               <input
                 type="text"
@@ -198,7 +198,7 @@
             required
           />
           <label for="apartment-RentValue" class="apartment-RentValue-form"
-            >Insira o valor do Aluguel</label
+            >Insira o valor do aluguel</label
           >
           <input
             type="number"
@@ -209,11 +209,11 @@
             required
           />
           <label for="apartmant-numberRooms" class="apartmant-numberRooms-form"
-            >Insira a quantidade de comodos que o apartamento possui</label
+            >Insira a quantidade de cômodos que o apartamento possui</label
           >
           <input
             type="number"
-            placeholder="Comodos"
+            placeholder="Cômodos"
             name="numberRoomsApartmant"
             id="apartmant-numberRooms"
             class="numberRoomsApartmant"
@@ -232,7 +232,7 @@
           maxlength="11"
         />
         <label for="apartmant-nameBuilding" class="apartmant-nameBuilding-form"
-          >Insira o nome do prédio do apartamento</label
+          >Insira o nome do prédio/condomínio do apartamento</label
         >
         <input
           type="text"
@@ -248,11 +248,11 @@
     </div>
     <div class="container">
 
-      <h3 class="newForm">Insira o CPF do locatario junto ao nome do predio e do apartamento</h3>
+      <h3 class="newForm">Insira o CPF do inquilino junto ao nome do prédio/condomíni e o número do apartamento</h3>
       <div class="container-form">
       <form  class="apartmant-change-form">
         <label for="cpfLocatario" class="apartmant-name-form"
-          >Insira o CPF do novo locatario</label
+          >Insira o CPF do novo inquilino</label
         >
         <input
           type="number"
@@ -265,7 +265,7 @@
           required
         />
         <label for="nameBuilding" class="nameBuilding-form"
-          >Insira o nome do predio</label
+          >Insira o nome do prédio/condomínio</label
         >
         <input
           type="text"
@@ -286,7 +286,7 @@
           class="apartmantNumber"
           required
         />
-        <button type="submit" class="form__button">Cadastrar</button>
+        <button type="submit" class="form__button">Alocar</button>
       </form>
     </div>
     </div>
