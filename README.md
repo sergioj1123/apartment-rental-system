@@ -37,9 +37,9 @@ A parte do Back-end foi realizado utilizando também o JavaScript, além do Node
 
 3. Inserção de um novo apartamento:
 
-- Inserção sem um CPF cadastrado e com CPF cadastrado;
-- Nome do prédio/condomínio que já existam no sistema e número que ainda não exista para esse prédio;
-- Nome do prédio/condomínio que já existam no sistema e número que já exista para esse prédio e esteja alugado, outro teste para um número que não esteja alugado;
-- Nome do prédio/condomínio que não exista no sistema.
+  - Inserção sem um CPF cadastrado e com CPF cadastrado;
+  - Nome do prédio/condomínio que já existam no sistema e número que ainda não exista para esse prédio;
+  - Nome do prédio/condomínio que já existam no sistema e número que já exista para esse prédio e esteja alugado, outro teste para um número que não esteja alugado;
+  - Nome do prédio/condomínio que não exista no sistema.
 
 4. Alteração para alugar um apartamento com informações de um CPF que não exista no sistema, nome de prédio que não exista no sistema, número que não pertença ao prédio inserido ou já esteja alocado.
