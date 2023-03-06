@@ -31,11 +31,11 @@ A parte do Back-end foi realizado utilizando também o JavaScript, além do Node
 
 **Pontos de Teste**
 
-6. Inserção de um novo locatário, com um CPF que não exista dentro do sistema e outro que já exista;
+1. Inserção de um novo locatário, com um CPF que não exista dentro do sistema e outro que já exista;
 
-7. Inserção de um novo prédio/condomínio com nome que não exista dentro do sistema e outro que já exista;
+2. Inserção de um novo prédio/condomínio com nome que não exista dentro do sistema e outro que já exista;
 
-8. Inserção de um novo apartamento:
+3. Inserção de um novo apartamento:
 
 - Inserção sem um CPF cadastrado e com CPF cadastrado;
 - Nome do prédio/condomínio que já existam no sistema e número que ainda não exista para esse prédio;
