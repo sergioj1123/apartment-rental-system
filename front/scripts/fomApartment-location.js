@@ -5,7 +5,7 @@ formLocationApartmants.addEventListener("submit", (event) => {
   event.preventDefault();
 
   const cpf = mascara(document.querySelector(".cpfLocatario").value);
-  const buildingName = document.querySelector(".nameBuilding").value;
+  const buildingName = document.querySelector(".buildingName").value;
   const apartmantNumber = document.querySelector(".apartmantNumber").value;
 
   (async () => {

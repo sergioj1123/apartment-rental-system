@@ -83,11 +83,11 @@ function newApartment(
     newUser("normal", "123", false);
     newBuilding("Edificio Central", "1", "Rua numero 1");
     newBuilding("Edificio ao lado do Central", "2", "Rua numero 2");
-    newTenant("Sergio Felix", "123-456-789-09");
-    newTenant("A", "123-456-789-09");
-    newTenant("Teste1", "123-456-789-09");
-    newTenant("Teste2", "123-456-789-09");
-    newTenant("Teste3", "123-456-789-09");
+    newTenant("Teste 1", "123.456.789-09");
+    newTenant("Teste 2", "578.776.027-15");
+    newTenant("Teste 5", "698.833.166-23");
+    newTenant("Teste 3", "556.773.746-79");
+    newTenant("Teste 4", "338.230.758-88");
     newApartment("1", "Apartamento de 100 m", 1000, 5, "", 1);
     newApartment("2", "Apartamento de 200 m", 2000, 4, 1, 1);
   }
@@ -136,6 +136,21 @@ app.get("/getAllBuildings", (req, res) => {
 app.get("/getAllApartmants", (req, res) => {
   (async () => {
     const getAllApartmants = await Apartment.findAll();
+    const teste = [];
+    console.log(Array.isArray(teste));
+
+    for (let i = 0; i < getAllApartmants.length; i++) {
+      const buildingName = await Building.findOne({
+        where: { id: getAllApartmants[i].building_id },
+      });
+      const tenantName = await Tenant.findOne({
+        where: { id: getAllApartmants[i].tenant_id },
+      });
+      getAllApartmants[i].building_id = buildingName.name;
+      if (getAllApartmants[i].tenant_id != null) {
+        getAllApartmants[i].tenant_id = tenantName.cpf;
+      }
+    }
     res.send(getAllApartmants);
   })();
 });
@@ -180,6 +195,9 @@ app.post("/newApartmant", (req, res) => {
     const cpfTenant = await Tenant.findOne({
       where: { cpf: req.body.cpf },
     });
+    const numberAllApartmants = await Apartment.findAll({
+      where: { number: req.body.number },
+    });
     // verifica se existe um predio com o nome que esta sendo relacionado pelo nome, recuperando o ID do predio
     if (req.body.cpf) {
       // Caso o campo CPF tenha sido preenchido, mas não encontrou nenhuma relação entre o CPF inserido e os que possuem no ImageBitmapRenderingContext, o sistema não inser
@@ -189,25 +207,40 @@ app.post("/newApartmant", (req, res) => {
       }
     }
     if (buildingName != null && buildingName !== undefined) {
-      if (!req.body.cpf) {
-        newApartment(
-          req.body.number,
-          req.body.description,
-          req.body.value,
-          req.body.rooms,
-          "",
-          buildingName.id
-        );
-      } else {
-        newApartment(
-          req.body.number,
-          req.body.description,
-          req.body.value,
-          req.body.rooms,
-          cpfTenant.id,
-          buildingName.id
-        );
+      let alredyHaveNumberApartmant = false;
+
+      if (Object.keys(numberAllApartmants).length != 0) {
+        numberAllApartmants.map((element) => {
+          console.log(element.building_id);
+          if (element.building_id == buildingName.id) {
+            alredyHaveNumberApartmant = true;
+          }
+        });
       }
+      if (alredyHaveNumberApartmant == true) {
+        res.send("Já existe esse número de apartamento");
+        return;
+      }
+      if (buildingName.id)
+        if (!req.body.cpf) {
+          newApartment(
+            req.body.number,
+            req.body.description,
+            req.body.value,
+            req.body.rooms,
+            "",
+            buildingName.id
+          );
+        } else {
+          newApartment(
+            req.body.number,
+            req.body.description,
+            req.body.value,
+            req.body.rooms,
+            cpfTenant.id,
+            buildingName.id
+          );
+        }
       res.send("Inserido com sucesso");
     } else {
       res.send("Predio não cadastrado");
@@ -215,60 +248,49 @@ app.post("/newApartmant", (req, res) => {
   })();
 });
 
-// // Botão de locação de apartamento
-// app.post("/location", (req, res) => {
-//   (async () => {
-//    // verifica se existe um predio com o nome que esta sendo relacionado pelo nome, recuperando o ID do predio
-//    const buildingName = await Building.findOne({
-//     where: { name: req.body.buildingName },
-//   });
-//   const cpfTenant = await Tenant.findOne({
-//     where: { cpf: req.body.cpf },
-//   });
-//   const apartmantNumber = await Apartment.findOne({
-//     where: { number: req.body.apartmantNumber },
-//   });
+// Botão de locação de apartamento
+app.post("/location", (req, res) => {
+  (async () => {
+    // verifica se existe um predio com o nome que esta sendo relacionado pelo nome, recuperando o ID do predio
+    const buildingName = await Building.findOne({
+      where: { name: req.body.buildingName },
+    });
+    const cpfTenant = await Tenant.findOne({
+      where: { cpf: req.body.cpf },
+    });
+    const apartmantNumber = await Apartment.findAll({
+      where: { number: req.body.apartmantNumber },
+    });
+    if (cpfTenant == null && cpfTenant == undefined) {
+      res.send("CPF ainda não cadastrado");
+      return;
+    }
 
-//   if (cpfTenant == null && cpfTenant == undefined) {
-//     res.send("CPF não cadastrado para algum inquilino");
-//     return;
-//   }
-
-//   if (buildingName == null && buildingName == undefined) {
-//     res.send("Não existe esse predio");
-//     return;
-//   }else{
-//     if(buildingName.id == )
-//   }
-
-//   if (cpfTenant == null && cpfTenant == undefined) {
-//     res.send("CPF não cadastrado para algum inquilino");
-//     return;
-//   }
-
-//   if (buildingName != null && buildingName !== undefined) {
-//     if (!req.body.cpf) {
-//       newApartment(
-//         req.body.number,
-//         req.body.description,
-//         req.body.value,
-//         req.body.rooms,
-//         "",
-//         buildingName.id
-//       );
-//     } else {
-//       newApartment(
-//         req.body.number,
-//         req.body.description,
-//         req.body.value,
-//         req.body.rooms,
-//         cpfTenant.id,
-//         buildingName.id
-//       );
-//     }
-//     res.send("Inserido com sucesso");
-//   } else {
-//     res.send("Predio não cadastrado");
-//   }
-// })();
-// });
+    if (buildingName == null && buildingName == undefined) {
+      res.send("Não existe esse predio");
+      return;
+    }
+    // Variavel que criei para controlar caso não o número do apartamento não pertença ao nome do predio inserido
+    let buildingNumberNotFound = true;
+    if (Object.keys(apartmantNumber).length === 0) {
+      res.send("Número de apartamento não cadastrado");
+      return;
+    } else {
+      apartmantNumber.map((element) => {
+        if (element.building_id == buildingName.id) {
+          buildingNumberNotFound = false;
+          if (element.tenant_id == null && element.tenant_id == undefined) {
+            element.tenant_id = cpfTenant.id;
+            element.save();
+            res.send("Inquilino alocado com sucesso");
+          } else {
+            res.send("Esse apartamento já possui inquilino");
+          }
+        }
+      });
+    }
+    if (buildingNumberNotFound == true) {
+      res.send("Número do prédio não pertence ao predio inserido");
+    }
+  })();
+});
