@@ -29,7 +29,7 @@ A parte do Back-end foi realizado utilizando também o JavaScript, além do Node
 
 5. Em seguida, deve-se emular um servidor para o arquivo index.html dentro da pasta front, pois os sricpts utilizam a exportação e importação local, podendo ser barrada pelo navegador. É possível emular esse servidor utilizando a extensão “Live Server” do Vscode. Após isso, já é possível utilizar o sistema.
 
-   **Pontos de Teste**
+**Pontos de Teste**
 
 6. Inserção de um novo locatário, com um CPF que não exista dentro do sistema e outro que já exista;
 
